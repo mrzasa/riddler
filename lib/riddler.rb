@@ -1,4 +1,5 @@
 require "riddler/version"
+require "riddler/flexible_encoder"
 
 module Riddler
   class Riddler
