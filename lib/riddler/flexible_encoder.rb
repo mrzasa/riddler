@@ -18,8 +18,8 @@ module Riddler
 
     private
 
-    def dispatch(value, digit)
-      item = value.sample
+    def dispatch(descriptions, digit)
+      item = descriptions.sample
       if item.is_a? Proc
         return item.call digit
       end
