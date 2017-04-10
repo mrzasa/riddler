@@ -13,15 +13,15 @@ module Riddler
     end
 
     def encode(digit)
-      dispatch @code_book[digit]
+      dispatch @code_book[digit], digit
     end
 
     private
 
-    def dispatch(value)
+    def dispatch(value, digit)
       item = value.sample
       if item.is_a? Proc
-        return item.call
+        return item.call digit
       end
       return item
     end

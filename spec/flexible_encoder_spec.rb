@@ -6,7 +6,8 @@ RSpec.describe Riddler::FlexibleEncoder do
     encoder = Riddler::FlexibleEncoder.new
     encoder.add '1' => "that's just one"
     encoder.add '2' => twos
-    encoder.add '3' => lambda { "lambda result" }
+    encoder.add '3' => Proc.new { "lambda result" }
+    encoder.add '4' => lambda { |digit| "lambda result for #{digit}" }
     encoder
   end
 
@@ -20,6 +21,10 @@ RSpec.describe Riddler::FlexibleEncoder do
 
   it "calls block for block value" do
     expect(encoder.encode('3')).to eq "lambda result"
+  end
+
+  it "passes digit to labmda" do
+    expect(encoder.encode('4')).to eq "lambda result for 4"
   end
 end
 
